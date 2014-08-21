@@ -1,0 +1,44 @@
+// You have to send html id of the form so we know where should we dispay errors.
+// id of the form should be set on form and inside hidden field (double check html)
+
+
+var obj_type = "<%= obj_type %>";
+
+var formObj = $("#<%= form_id %>"); // form_id or form_container_id - it is not possible to change id of simple form
+
+var errors = <%= raw(errors.to_json) %>;
+
+// form is submitted - remove all error marks on input fields
+formObj.find("div.errors").remove(); // remove errors below input fields
+formObj.find(".error").removeClass("error"); // remove class on input fields
+
+for (var key in errors){
+  var error = errors[key];
+
+  var input = formObj.find("#"+ obj_type + "_" +key);
+  var obj = input.closest(".form-group");
+
+  obj.find(".form-control").addClass("error");
+
+  if(obj.find(".errors").size() == 0) {
+    obj.append("<div class='errors'></div>")
+  }
+
+  obj.find("div.errors").append("<div class='error'>"+error[0]+"</div>"); // we append only first error
+
+}
+
+
+
+var l = 10;
+for( var i = 0; i < 10; i++ )
+ $( "#<%= form_id %>" ).animate( { 'margin-left': "+=" + ( l = -l ) + 'px' }, 50);
+
+
+
+<% if defined? flash_message %>
+   flash_message("danger", '<%= flash_message %>');
+<% end %>
+
+
+

@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811125102) do
+ActiveRecord::Schema.define(version: 20140821111446) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "images", force: true do |t|
     t.string   "name"
@@ -51,15 +54,17 @@ ActiveRecord::Schema.define(version: 20140811125102) do
     t.datetime "image_updated_at"
   end
 
-  add_index "projects", ["created_at"], name: "index_projects_on_created_at"
-  add_index "projects", ["status"], name: "index_projects_on_status"
+  add_index "projects", ["created_at"], name: "index_projects_on_created_at", using: :btree
+  add_index "projects", ["status"], name: "index_projects_on_status", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password"
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
+    t.boolean  "deleted",         default: false, null: false
+    t.boolean  "enabled",         default: true,  null: false
   end
 
 end

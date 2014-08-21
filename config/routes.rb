@@ -11,8 +11,18 @@ Rails.application.routes.draw do
     resources :projects
   end
 
+  get '/pages/*slug' => 'pages#show', :as => 'page'
 
-  get '/*slug' => 'pages#show', :as => 'page'
+
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy] #we limit to just those actions, because we dont need other actions
+  match '/signup',  to: 'users#new', via: 'get'
+  match '/login',  to: 'sessions#new', via: 'get'
+  match '/logout', to: 'sessions#destroy', via: 'delete'
+
+  root to: "sessions#new", as: :root
+  match "/", to: "sessions#new", via: 'get'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

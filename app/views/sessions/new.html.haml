@@ -1,0 +1,6 @@
+= simple_form_for(:user, url: sessions_path, remote: true, html: { id: :new_session }) do |f|
+  = f.input :email, autofocus: true, label: false, placeholder: "Enter email"
+  = f.input :password, label: false, placeholder: "Enter password"
+  = f.input :remember, :required => true, :as => :boolean, :label => "Remember me", :wrapper => :inline_checkbox
+
+  = f.submit "Login", class: "btn btn-lg btn-primary btn-login pull-left"

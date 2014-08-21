@@ -16,7 +16,6 @@ class M3TableAdmin::PagesController < M3TableAdmin::ApplicationController
 
       @table.add_column "visible_in_menu", "checkbox"
 
-      @table.add_filters "status", ["published", "unpublished", "archived", "all"]
 
     end
 end

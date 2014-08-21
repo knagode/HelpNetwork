@@ -1,17 +1,11 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 development: &defaults
   adapter: postgresql
   encoding: utf8
-  database: lophster_development
-  username: lophster
-  password: lophster
-  su_username: markojurincic
-  su_password: sewen7sewen
+  database: test_development
+  username: test
+  password: test
+  su_username: su
+  su_password: su_password
 
 
 # Warning: The database defined as "test" will be erased and
@@ -19,7 +13,7 @@ development: &defaults
 # Do not set this db to the same as development or production.
 test:
   <<: *defaults
-  database: lophster_test
+  database: test_test
 
 production:
   adapter: postgresql

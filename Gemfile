@@ -74,6 +74,10 @@ end
 # Custom settings
 gem "choices", "0.3.2"
 
+# OAuth authentication providers.
+gem 'omniauth-facebook', '~> 1.6.0'
+gem 'omniauth-google-oauth2', '~> 0.2.4'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

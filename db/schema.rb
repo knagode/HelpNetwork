@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821111446) do
+ActiveRecord::Schema.define(version: 20140821120413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140821111446) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
   end
+
+  create_table "oauths", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauths", ["provider", "uid"], name: "index_oauths_on_provider_and_uid", using: :btree
 
   create_table "pages", force: true do |t|
     t.string   "title"

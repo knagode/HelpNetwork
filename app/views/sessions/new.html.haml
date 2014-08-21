@@ -4,3 +4,5 @@
   = f.input :remember, :required => true, :as => :boolean, :label => "Remember me", :wrapper => :inline_checkbox
 
   = f.submit "Login", class: "btn btn-lg btn-primary btn-login pull-left"
+
+= render "oauths/strategies"

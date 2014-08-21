@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # Authentication with social providers.
+  get "auth/use/:provider" => "oauths#use_provider", as: "use_provider"
+  get "/auth/:provider/callback" => "oauths#create"
+  delete "/auth/:provider" => "oauths#destroy", as: "auth"
+  get "/auth/failure" => "oauths#failure"
 
   namespace :m3_table_admin, path: "admin" do
     get "/", to: "users#index"

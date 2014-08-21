@@ -1,0 +1,42 @@
+-# navigation styled for Bootstrap 3.0
+%nav.navbar.navbar-default.navbar-fixed-top
+  .col-sm-12
+    .navbar-header
+      .navbar-brand
+        = link_to "/" do
+          = "Logo"
+          / = image_tag "logo.png"
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to "Users", m3_table_admin_users_path
+        %li
+          = link_to "Pages", m3_table_admin_pages_path
+        %li
+          = link_to "Images", m3_table_admin_images_path
+        %li
+          = link_to "Projects", m3_table_admin_projects_path
+        %li
+          = link_to "Logout?", "#"
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Dropdown
+            %span.caret
+          %ul.dropdown-menu{role: "menu"}
+            %li
+              %a{href: "#"} Action
+            %li
+              %a{href: "#"} Another action
+            %li
+              %a{href: "#"} Something else here
+            %li.divider
+            %li
+              %a{href: "#"} Separated link
+            %li.divider
+            %li
+              %a{href: "#"} One more separated link

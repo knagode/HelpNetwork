@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811125102) do
+ActiveRecord::Schema.define(version: 20141031184232) do
 
   create_table "images", force: true do |t|
     t.string   "name"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20140811125102) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "latitude",   precision: 10, scale: 6
+    t.decimal  "longitude",  precision: 10, scale: 6
   end
 
 end

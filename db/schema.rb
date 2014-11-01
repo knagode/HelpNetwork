@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031184232) do
+ActiveRecord::Schema.define(version: 20141101185629) do
+
+  create_table "authentication_tokens", force: true do |t|
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "help_request_rescuers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "help_request_id"
+    t.string   "state"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "help_requests", force: true do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "images", force: true do |t|
     t.string   "name"
@@ -22,6 +48,27 @@ ActiveRecord::Schema.define(version: 20141031184232) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
   end
+
+  create_table "mobile_devices", force: true do |t|
+    t.string   "model"
+    t.string   "system_name"
+    t.string   "system_version"
+    t.boolean  "multitasking",   default: false, null: false
+    t.integer  "user_id"
+    t.integer  "integer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "oauths", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauths", ["provider", "uid"], name: "index_oauths_on_provider_and_uid"
 
   create_table "pages", force: true do |t|
     t.string   "title"
@@ -56,12 +103,28 @@ ActiveRecord::Schema.define(version: 20141031184232) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "password"
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "latitude",   precision: 10, scale: 6
-    t.decimal  "longitude",  precision: 10, scale: 6
+    t.string   "password_digest"
+    t.boolean  "deleted",                                             default: false, null: false
+    t.boolean  "enabled",                                             default: true,  null: false
+    t.decimal  "latitude",                   precision: 10, scale: 6
+    t.decimal  "longitude",                  precision: 10, scale: 6
+    t.string   "lastname"
+    t.string   "firstname"
+    t.string   "name"
+    t.string   "sex"
+    t.date     "birthday"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.boolean  "email_verified",                                      default: false, null: false
+    t.string   "email_verification_token"
+    t.datetime "email_verification_sent_at"
+    t.datetime "email_verified_at"
+    t.string   "picture_url"
+    t.string   "facebook_id"
+    t.string   "google_id"
   end
 
 end

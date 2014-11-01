@@ -16,9 +16,9 @@ class Api::V1::OauthsController < Api::V1::ApiController
       if Rails.env.test?
         require 'json'
         if "facebook" == provider
-          content = {:email => "test@test.com", :uid => "123123", :name => "Marko", :first_name => "Marko", :last_name => "test", :gender => "male", :birthday => "7-7-2014"}.to_json
+          content = {:email => "test@test.com", :id => "123123", :name => "Marko", :first_name => "Marko", :last_name => "test", :gender => "male", :birthday => "2014-1-1"}.to_json
         else
-          content = {:email => "test@test.com", :uid => "123123", :name => "Marka test", :first_name => "Marka", :last_name => "test", :gender => "female", :birthday => ""}.to_json
+          content = {:email => "test@test.com", :id => "123123", :name => "Marka test", :first_name => "Marka", :last_name => "test", :gender => "female", :birthday => ""}.to_json
         end
         status = '200'
       else
@@ -60,7 +60,7 @@ class Api::V1::OauthsController < Api::V1::ApiController
           create_new_user = true
           @oauth.delete
         else
-          @user.picture = profile_picture
+          @user.picture_url = profile_picture
           @user.save!
         end
 
@@ -73,23 +73,19 @@ class Api::V1::OauthsController < Api::V1::ApiController
 
       if create_new_user
         @user = User.new
-        @user.picture = profile_picture
+        @user.picture_url = profile_picture
         @user.email           = email
         @user.name            = content['name']
         @user.firstname      = content['first_name']
         @user.lastname       = content['last_name']
         @user.email_verified_at = Time.zone.now
         @user.email_verified = true
-        if content['gender'] == "female"
-          @user.sex = 1
-        else
-          @user.sex = 0
-        end
+
+        @user.sex = content['gender']
+
 
         if (content['birthday']) && !(content['birthday'].blank?)
           @user.birthday         = content['birthday']
-        else
-          @user.birthday         = "1-1-1980"
         end
 
         #Set a password to the user, maybe we will send it to the user later

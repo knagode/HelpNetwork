@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
-
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -22,6 +23,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+# state of the art hash function  to irreversibly encrypt the password to form the password hash
+gem 'bcrypt', '~> 3.1.7', require: "bcrypt"
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -68,8 +72,12 @@ group :production do
   # gem 'rails_serve_static_assets'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Custom settings
+gem "choices", "0.3.2"
+
+# OAuth authentication providers.
+gem 'omniauth-facebook', '~> 1.6.0'
+gem 'omniauth-google-oauth2', '~> 0.2.4'
 
 # Use unicorn as the app server
 # gem 'unicorn'

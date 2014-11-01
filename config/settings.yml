@@ -1,0 +1,56 @@
+defaults: &defaults
+
+  project: HelpNetwork
+  project_id: 1
+
+  company:
+    name: HelpNetwork
+
+
+  locales: [en]
+  locale_currencies:
+    en: EUR
+
+
+  base_currency: EUR
+
+
+development:
+  <<: *defaults
+
+  domain: "localhost"
+
+  omniauth:
+    facebook:
+      id: facebook_id
+      secret: facebook_secret
+    google:
+      id: google_id
+      secret: google_secret
+
+test: &testing
+  <<: *defaults
+
+  domain: "www.lophster.com"
+
+  omniauth:
+    facebook:
+      id: facebook_id
+      secret: facebook_secret
+    google:
+      id: google_id
+      secret: google_secret
+
+production:
+  <<: *defaults
+
+  domain: "www.lophster.com"
+
+  omniauth:
+    facebook:
+      id: facebook_id
+      secret: facebook_secret
+    google:
+      id: google_id
+      secret: google_secret
+

@@ -1,0 +1,7 @@
+= simple_form_for @user, remote: true do |f|
+  = f.input :email, autofocus: true, label: false, placeholder: "Enter email"
+  = f.input :password, label: false, placeholder: "Enter password"
+  = f.input :password_confirmation, label: false, placeholder: "Enter password confirmation"
+  = f.submit "Sign up", class: "btn btn-lg btn-default pull-left"
+
+= render "oauths/strategies"

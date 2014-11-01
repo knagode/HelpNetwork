@@ -3,8 +3,7 @@ ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -50,6 +49,7 @@ group :development do
   gem 'quiet_assets' # quite noisy asset logging
 
   gem "binding_of_caller" #display private instance variable errors
+  gem 'sqlite3'
 end
 
 group :test do
@@ -64,12 +64,13 @@ group :test do
   gem 'childprocess', '0.3.6'
 
   gem 'simplecov', '~> 0.8.2', :require => false #code coverage
-
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'rails_12factor', '0.0.2' #needed for heroku
   # gem 'rails_serve_static_assets'
+  gem 'pg'
 end
 
 # Custom settings

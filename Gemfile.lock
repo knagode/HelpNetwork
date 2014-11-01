@@ -183,6 +183,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.1)
     poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -318,6 +319,7 @@ DEPENDENCIES
   omniauth-facebook (~> 1.6.0)
   omniauth-google-oauth2 (~> 0.2.4)
   paperclip
+  pg
   poltergeist (~> 1.5.1)
   quiet_assets
   rails (= 4.1.4)

@@ -5,25 +5,26 @@ class Api::V1::ApiController < ActionController::Base
 
 
   def set_locale
-    begin
-      if language_params.has_key?(:locale)
-        tmp_locale = :en
+    @current_locale = :en
+    # begin
+    #   if language_params.has_key?(:locale)
+    #     tmp_locale = :en
 
-        if I18n.available_locales.include?(language_params[:locale].to_sym)
-          tmp_locale = language_params[:locale]
-        end
-        I18n.locale = tmp_locale
-        @current_locale = tmp_locale
-      else
-        errors = ActiveModel::Errors.new(nil)
-        errors.add(:language, t('api.locale_not_set'))
-        return render :json => {:success => false, :errors => errors}.to_json
-      end
-    rescue ActionController::ParameterMissing
-      errors = ActiveModel::Errors.new(nil)
-      errors.add(:language, t('api.parameter_missing'))
-      return render :json => {:success => false, :errors => errors}.to_json
-    end
+    #     if I18n.available_locales.include?(language_params[:locale].to_sym)
+    #       tmp_locale = language_params[:locale]
+    #     end
+    #     I18n.locale = tmp_locale
+    #     @current_locale = tmp_locale
+    #   else
+    #     errors = ActiveModel::Errors.new(nil)
+    #     errors.add(:language, t('api.locale_not_set'))
+    #     return render :json => {:success => false, :errors => errors}.to_json
+    #   end
+    # rescue ActionController::ParameterMissing
+    #   errors = ActiveModel::Errors.new(nil)
+    #   errors.add(:language, t('api.parameter_missing'))
+    #   return render :json => {:success => false, :errors => errors}.to_json
+    # end
 
   end
 

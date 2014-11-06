@@ -41,4 +41,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # User email verifications.
+  resources :email_verifications, only: [:create, :update] do
+    member do
+      get :pending
+      get :update
+    end
+  end
+
 end

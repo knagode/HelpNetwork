@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20141101185629) do
     t.integer  "help_request_id"
     t.string   "state"
     t.text     "description"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.integer  "distance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,7 +37,8 @@ ActiveRecord::Schema.define(version: 20141101185629) do
     t.text     "description"
     t.decimal  "latitude"
     t.decimal  "longitude"
-    t.string   "state"
+    t.integer  "helper_user_id"
+    t.datetime "helper_responded_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -106,11 +110,11 @@ ActiveRecord::Schema.define(version: 20141101185629) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "latitude",                   precision: 10, scale: 6
+    t.decimal  "longitude",                  precision: 10, scale: 6
     t.string   "password_digest"
     t.boolean  "deleted",                                             default: false, null: false
     t.boolean  "enabled",                                             default: true,  null: false
-    t.decimal  "latitude",                   precision: 10, scale: 6
-    t.decimal  "longitude",                  precision: 10, scale: 6
     t.string   "lastname"
     t.string   "firstname"
     t.string   "name"

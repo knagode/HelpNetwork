@@ -7,7 +7,7 @@ class CreateHelpRequestRescuer < ActiveRecord::Migration
       t.text :description
       t.decimal :latitude
       t.decimal :longitude
-      t.distance :integer
+      t.integer :distance
       t.timestamps
     end
   end

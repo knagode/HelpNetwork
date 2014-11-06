@@ -14,10 +14,10 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :birthday, :name, :sex, presence: true
+  #validates :birthday, :name, :sex, presence: true
   has_secure_password
   validates :password, length: { minimum: 6 }, confirmation: { if: ->{ require_password_confirmation }}, if: ->{ require_password || require_password_confirmation }
-  validates :contract_accepted, acceptance: { if: ->{ require_contract_acceptance }}
+  #validates :contract_accepted, acceptance: { if: ->{ require_contract_acceptance }}
   validates :password_reset_token, uniqueness: true, allow_nil: true
   validates :email_verification_token, uniqueness: true, allow_nil: true
 

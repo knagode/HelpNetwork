@@ -1,7 +1,27 @@
-= simple_form_for @user, remote: true do |f|
-  = f.input :email, autofocus: true, label: false, placeholder: "Enter email"
-  = f.input :password, label: false, placeholder: "Enter password"
-  = f.input :password_confirmation, label: false, placeholder: "Enter password confirmation"
-  = f.submit "Sign up", class: "btn btn-lg btn-default pull-left"
+.users
+  .container
+    .row
+      .col-sm-4
 
-= render "oauths/strategies"
+
+      .col-sm-8
+
+        .jumbotron
+          %h1
+            = "Sodelovanje je ključ"
+
+          %p
+            = "Smo skupnost, kjer pomagamo en drugemu. Včasih jaz tebi, drugič ti meni. S srcem, zastonj. Smo ljudje, ki se skozi pomoč izpolnjujemo kot ljudje in skrbimo za lepšo prihodnost in lepe spomine."
+
+          %p
+            =link_to "#", class: "btn btn-primary btn-lg" do
+              = "Želim postati del skupnosti"
+
+
+        = simple_form_for @user, remote: true do |f|
+          = f.input :email, autofocus: true, label: false, placeholder: "Enter email"
+          = f.input :password, label: false, placeholder: "Enter password"
+          = f.input :password_confirmation, label: false, placeholder: "Enter password confirmation"
+          = f.submit "Sign up", class: "btn btn-lg btn-default pull-left"
+
+        = render "oauths/strategies"

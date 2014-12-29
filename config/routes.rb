@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   match '/login',  to: 'sessions#new', via: 'get'
   match '/logout', to: 'sessions#destroy', via: 'delete'
 
-  root to: "sessions#new", as: :root
+  root to: "users#new", as: :root
   match "/", to: "sessions#new", via: 'get'
 
   namespace :api do

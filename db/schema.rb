@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101185629) do
+ActiveRecord::Schema.define(version: 20150425211111) do
 
   create_table "authentication_tokens", force: true do |t|
     t.string   "token"
@@ -129,6 +129,9 @@ ActiveRecord::Schema.define(version: 20141101185629) do
     t.string   "picture_url"
     t.string   "facebook_id"
     t.string   "google_id"
+    t.text     "who_am_i"
+    t.text     "sign_up_reason"
+    t.text     "locations"
   end
 
 end

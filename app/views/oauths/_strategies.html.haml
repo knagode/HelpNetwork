@@ -8,11 +8,17 @@
 - facebook_url =  custom_domain + use_provider_path("facebook", :iref => after_login_redirect_to)
 - google_url = custom_domain + use_provider_path("google_oauth2", :iref => after_login_redirect_to)
 
+.row
+  .col-sm-6
+    = link_to facebook_url, class: "btn btn-primary btn-lg btn-block btn-facebook" do
+      = fontello_icon 'facebook'
+      = "Facebook"
+  .col-sm-6
+    = link_to google_url, class: "btn btn-primary btn-lg btn-block bg-color-gplus btn-gplus" do
+      = fontello_icon 'gplus'
+      = "Google"
 
-= link_to facebook_url, class: "btn btn-lg btn-block bg-color-fb" do
-  = "Facebook"
 
-= link_to google_url, class: "btn btn-lg btn-block bg-color-gplus" do
-  = "Google"
+
 
 

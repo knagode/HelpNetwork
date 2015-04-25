@@ -1,0 +1,13 @@
+.container
+  #wrapper
+    %h1= "Povej nekaj o sebi"
+    .content
+      = 'Iskalci pomoči raje zaprosijo ljudi, ki se vsaj na kratko predstavijo.'
+
+    = simple_form_for current_user, remote: true do |f|
+      = f.input :who_am_i, autofocus: true, label: 'Predstavi se v stavku ali dveh'
+      = f.input :sign_up_reason, autofocus: true, label: 'Zakaj bi rad pomagal/a drugim?'
+      = f.input :locations, autofocus: true, label: 'Lokacije, na katerih si pripravljen pomagati (več lokacij loči z novo vrstico)'
+
+      %button.btn.btn-primary= 'Zaključi registracijo'
+

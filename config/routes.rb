@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'setup/step_2', to: 'setup#step_2'
+  get 'setup/finished', to: 'setup#finished'
+
   # User email verifications.
   resources :email_verifications, only: [:create, :update] do
     member do

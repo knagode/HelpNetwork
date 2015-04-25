@@ -23,10 +23,18 @@ class UsersController < ApplicationController
 
   end
 
+  def update
+    @user = current_user
+    @user.update_attributes user_params
+
+    redirect_via_turbolinks_to setup_finished_path
+
+  end
+
 private
   def user_params
     params.require(:user).permit(
-      :email, :password, :password_confirmation
+      :email, :password, :password_confirmation, :who_am_i, :sign_up_reason, :locations
     )
   end
 
